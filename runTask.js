@@ -287,8 +287,8 @@ class ClientAPI {
 
   async getValidToken(isNew = false) {
     const existingToken = this.token;
-    // const isExp = isTokenExpired(existingToken);
-    if (existingToken && !isNew) {
+    const isExp = isTokenExpired(existingToken);
+    if (existingToken && !isNew && !isExp) {
       this.log("Using valid token", "success");
       return existingToken;
     } else {
